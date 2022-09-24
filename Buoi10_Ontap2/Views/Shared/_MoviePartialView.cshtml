@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Buoi10_Ontap2.Models.Movie>
+
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Genres.GenreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RunningTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genres.GenreName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RunningTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MovieId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MovieId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,73 @@
+﻿
+<script>
+    function fnConfirm() {
+        alert("Confirm submit");
+    }
+
+
+    function fnSuccess() {
+        alert("Success");
+    }
+
+
+    function fnFailed() {
+        alert("Failed");
+    }
+</script>
+<h2>Index</h2>
+
+@using (Ajax.BeginForm("Search", "Movies", new AjaxOptions()
+{
+    //Confirm = "fnConfirm",
+    //OnSuccess = "fnSuccess",
+    //OnFailure = "fnFailed",
+    HttpMethod = "POST",
+    UpdateTargetId = "partialId"
+}))
+{
+    <div class="form-horizontal">
+        <div class="form-group" style="display:inline-block">
+            @Html.Label("MovieName: ", htmlAttributes: new { @class = "control-label col-md-4" })
+            <span class="col-md-10">
+                @Html.TextBox("txtName")
+            </span>
+        </div>
+
+
+        <div class="form-group" style="display:inline-block">
+            @Html.Label("Genre: ", htmlAttributes: new { @class = "control-label col-md-4" })
+            <span class="col-md-10">
+                @Html.DropDownList("GenreId", null, htmlAttributes: new { @class = "form-control" })
+
+            </span>
+        </div>
+
+        <div class="form-group" style="display:inline-block">
+            @Html.Label("Genre: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <span class="col-md-10">
+                <input type="date" name="date" class="form-control" />
+            </span>
+        </div>
+
+
+
+        @*<div class="form-group">
+            @Html.A
+            @Html.LabelFor(model => model.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group" style="display:inline-block">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div id="partialId">
+    @Html.Partial("_MoviePartialView")
+</div>
+
